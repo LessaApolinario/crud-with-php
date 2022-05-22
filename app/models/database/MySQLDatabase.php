@@ -62,7 +62,9 @@ class MySQLDatabase implements IDatabase
 
     public function select($columns = "*", array $filters = null)
     {
-        // TODO: Implement select() method.
+        $stmt = $this->pdo->prepare("SELECT $columns FROM :table");
+        $stmt->bindValue(":table", $this->getTableName());
+        $stmt->execute();
     }
 
     public function delete($where)
