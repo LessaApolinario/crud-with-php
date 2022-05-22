@@ -14,5 +14,5 @@ interface IDatabase
 
     public function close();
 
-    public function setTableName();
+    public function setTableName($name);
 }
