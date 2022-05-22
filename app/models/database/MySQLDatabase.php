@@ -48,7 +48,11 @@ class MySQLDatabase implements IDatabase
 
     public function insert($data)
     {
-        // TODO: Implement insert() method.
+        $stmt = $this->pdo->prepare("INSERT INTO :table (:values) VALUES :data");
+        $stmt->bindValue(":table", $this->getTableName());
+        $stmt->bindValue(":values", $this->getFields());
+        $stmt->bindValue(":data", $data);
+        $stmt->execute();
     }
 
     public function update($data, $where)
