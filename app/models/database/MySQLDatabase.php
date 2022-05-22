@@ -46,11 +46,11 @@ class MySQLDatabase implements IDatabase
         $this->pdo = new PDO("msql:host:$this->host;dbname:$this->dbname", $this->username, $this->password);
     }
 
-    public function insert($data)
+    public function insert($values, $data)
     {
         $stmt = $this->pdo->prepare("INSERT INTO :table (:values) VALUES :data");
         $stmt->bindValue(":table", $this->getTableName());
-        $stmt->bindValue(":values", $this->getFields());
+        $stmt->bindValue(":values", $values);
         $stmt->bindValue(":data", $data);
         return $stmt->execute();
     }

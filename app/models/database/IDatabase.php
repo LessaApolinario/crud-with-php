@@ -4,7 +4,7 @@ interface IDatabase
 {
     public function connect();
 
-    public function insert($data);
+    public function insert($values, $data);
 
     public function update($data, $where);
 
