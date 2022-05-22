@@ -69,7 +69,10 @@ class MySQLDatabase implements IDatabase
 
     public function delete($where)
     {
-        // TODO: Implement delete() method.
+        $stmt = $this->pdo->prepare("DELETE FROM :table WHERE :where");
+        $stmt->bindValue(":table", $this->getTableName());
+        $stmt->bindValue("where", $where);
+        $stmt->execute();
     }
 
     public function close()
