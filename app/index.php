@@ -1,10 +1,10 @@
 <?php
-$class = $_GET["class"];
-$method = $_GET["action"];
+$classe = $_GET["classe"];
+$metodo = $_GET["acao"];
 
-$class .= "Controller";
+$classe .= "Controller";
 
-require_once "./controllers" . $class . ".php";
+require_once "./controllers" . $classe . ".php";
 
-$object = new $class();
-$object->$method();
+$objeto = new $classe();
+$objeto->$metodo();
