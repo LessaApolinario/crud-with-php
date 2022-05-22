@@ -57,7 +57,11 @@ class MySQLDatabase implements IDatabase
 
     public function update($data, $where)
     {
-        // TODO: Implement update() method.
+        $stmt = $this->pdo->prepare("UPDATE :table SET :data WHERE :where");
+        $stmt->bindValue(":table", $this->getTableName());
+        $stmt->bindValue(":data", $data);
+        $stmt->bindValue(":where", $where);
+        $stmt->execute();
     }
 
     public function select($columns = "*", array $filters = null)
