@@ -52,7 +52,7 @@ class MySQLDatabase implements IDatabase
         $stmt->bindValue(":table", $this->getTableName());
         $stmt->bindValue(":values", $this->getFields());
         $stmt->bindValue(":data", $data);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function update($data, $where)
@@ -61,14 +61,14 @@ class MySQLDatabase implements IDatabase
         $stmt->bindValue(":table", $this->getTableName());
         $stmt->bindValue(":data", $data);
         $stmt->bindValue(":where", $where);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function select($columns = "*", array $filters = null)
     {
         $stmt = $this->pdo->prepare("SELECT $columns FROM :table");
         $stmt->bindValue(":table", $this->getTableName());
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function delete($where)
@@ -76,7 +76,7 @@ class MySQLDatabase implements IDatabase
         $stmt = $this->pdo->prepare("DELETE FROM :table WHERE :where");
         $stmt->bindValue(":table", $this->getTableName());
         $stmt->bindValue("where", $where);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function close()
