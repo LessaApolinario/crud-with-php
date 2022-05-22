@@ -12,6 +12,8 @@ class MySQLDatabase implements IDatabase
     private $dbname;
     private $password;
 
+    private $tableName;
+
     public function __construct()
     {
         $this->host = HOST;
@@ -19,6 +21,12 @@ class MySQLDatabase implements IDatabase
         $this->dbname = DB;
         $this->password = PASS;
         $this->connect();
+    }
+
+    // Método particular para acessar a tabela do banco de dados
+    public function getTableName()
+    {
+        return $this->tableName;
     }
 
     public function connect()
@@ -51,8 +59,8 @@ class MySQLDatabase implements IDatabase
         // TODO: Implement close() method.
     }
 
-    public function setTableName()
+    public function setTableName($name)
     {
-        // TODO: Implement setTableName() method.
+        $this->tableName = $name;
     }
 }
