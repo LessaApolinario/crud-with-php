@@ -81,7 +81,7 @@ class MySQLDatabase implements IDatabase
 
     public function close()
     {
-        $stmt = $this->pdo->close();
+        $this->pdo->close();
     }
 
     public function setTableName($name)
