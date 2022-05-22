@@ -4,7 +4,7 @@ require_once "./config/config.php";
 
 class MySQLDatabase implements IDatabase
 {
-    private $pdo;
+    private $connection;
 
     // Variáveis de acesso ao banco de dados
     private $host;
@@ -31,7 +31,8 @@ class MySQLDatabase implements IDatabase
 
     public function connect()
     {
-        $this->pdo = new PDO("msql:host:$this->host;dbname:$this->dbname", $this->username, $this->password);
+        $this->connection = new PDO("mysql:host:$this->host;dbname:$this->dbname", $this->username, $this->password);
+        $this->connection->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
     }
 
     public function insert($values, $data)
