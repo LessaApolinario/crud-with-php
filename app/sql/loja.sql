@@ -17,6 +17,7 @@ CREATE TABLE roupa
     preco        FLOAT,
     descricao    VARCHAR(200),
     numero       INT,
+    quantidade INT,
     categoria_id INT
         CONSTRAINT rp_cat_id FOREIGN KEY (categoria_id) REFERENCES categoria(id);
 );
