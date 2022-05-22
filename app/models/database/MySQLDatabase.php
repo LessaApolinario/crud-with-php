@@ -13,7 +13,6 @@ class MySQLDatabase implements IDatabase
     private $password;
 
     private $tableName;
-    private $fields;
 
     public function __construct()
     {
@@ -28,17 +27,6 @@ class MySQLDatabase implements IDatabase
     public function getTableName()
     {
         return $this->tableName;
-    }
-
-    // Este campo é um array de campos de uma tabela do banco de dados separados por vírgula
-    public function getFields()
-    {
-        return $this->fields;
-    }
-
-    public function setFields($fields): void
-    {
-        $this->fields = $fields;
     }
 
     public function connect()
