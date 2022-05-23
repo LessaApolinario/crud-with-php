@@ -14,7 +14,8 @@ class RoupaDAO extends DAO
         parent::setTableName($this->tableName);
     }
 
-    public function create($roupa) {
+    // create
+    public function cadastrar($roupa) {
         $values = "nome, preco, descricao, numero, quantidade";
         $data = ":nome, :preco, :descricao, :numero, :quantidade";
         $stmt = $this->database->insert($values, $data);
