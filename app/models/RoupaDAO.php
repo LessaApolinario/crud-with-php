@@ -26,4 +26,18 @@ class RoupaDAO extends DAO
         $stmt->bindValue(":quantidade", $roupa->getQuantidade());
         return $stmt->execute();
     }
+
+    // update
+    public function atualizar($roupa) {
+        $data = ":nome, :preco, :descricao, :numero, :quantidade";
+        $where = "id = :id";
+        $stmt = $this->database->update($data, $where);
+        $stmt->bindValue(":nome", $roupa->getNome());
+        $stmt->bindValue(":preco", $roupa->getPreco());
+        $stmt->bindValue(":descricao", $roupa->getDescricao());
+        $stmt->bindValue(":numero", $roupa->getNumero());
+        $stmt->bindValue(":quantidade", $roupa->getQuantidade());
+        $stmt->bindValue(":id", $roupa->getId());
+        return $stmt->execute();
+    }
 }
