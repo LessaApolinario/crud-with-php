@@ -23,12 +23,6 @@ class MySQLDatabase implements IDatabase
         $this->connect();
     }
 
-    // Método particular para acessar a tabela do banco de dados
-    public function getTableName()
-    {
-        return $this->tableName;
-    }
-
     public function connect()
     {
         $this->connection = new PDO("mysql:host:$this->host;dbname:$this->dbname", $this->username, $this->password);
