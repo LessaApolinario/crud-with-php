@@ -16,10 +16,14 @@ class RoupaController
         $numero = $_REQUEST["numero"];
         $quantidade = $_REQUEST["quantidade"];
         $this->roupa = new Roupa($nome, $preco, $descricao, $numero, $quantidade);
-        $this->roupaDAO = new RoupaDAO();
+        try {
+            $this->roupaDAO = new RoupaDAO();
 
-        if ($this->roupaDAO->cadastrar($this->roupa)) {
-            require_once "./views/roupa/cadastrar.php";
+            if ($this->roupaDAO->cadastrar($this->roupa)) {
+                require_once "./views/roupa/cadastrar.php";
+            }
+        } catch (PDOException $error) {
+            echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
         }
     }
 }
