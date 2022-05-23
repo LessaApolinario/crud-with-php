@@ -45,4 +45,11 @@ class RoupaDAO extends DAO
         $stmt->bindValue(":id", $roupa->getId());
         return $stmt->execute();
     }
+
+    // delete / remove
+    public function deletar($id) {
+        $stmt = $this->database->delete("id = :id");
+        $stmt->bindValue(":id", $id);
+        return $stmt->execute();
+    }
 }
