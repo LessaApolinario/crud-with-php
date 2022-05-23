@@ -15,7 +15,8 @@ class RoupaDAO extends DAO
     }
 
     // create
-    public function cadastrar($roupa) {
+    public function cadastrar($roupa)
+    {
         $values = "nome, preco, descricao, numero, quantidade";
         $data = ":nome, :preco, :descricao, :numero, :quantidade";
         $stmt = $this->database->insert($values, $data);
@@ -28,12 +29,14 @@ class RoupaDAO extends DAO
     }
 
     // read / list
-    public function listar() {
+    public function listar()
+    {
         return $this->database->select("*", null);
     }
 
     // update
-    public function atualizar($roupa) {
+    public function atualizar($roupa)
+    {
         $data = ":nome, :preco, :descricao, :numero, :quantidade";
         $where = "id = :id";
         $stmt = $this->database->update($data, $where);
@@ -47,7 +50,8 @@ class RoupaDAO extends DAO
     }
 
     // delete / remove
-    public function deletar($id) {
+    public function deletar($id)
+    {
         $stmt = $this->database->delete("id = :id");
         $stmt->bindValue(":id", $id);
         return $stmt->execute();
