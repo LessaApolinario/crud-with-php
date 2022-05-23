@@ -16,6 +16,7 @@ class RoupaController
         $numero = $_REQUEST["numero"];
         $quantidade = $_REQUEST["quantidade"];
         $this->roupa = new Roupa($nome, $preco, $descricao, $numero, $quantidade);
+
         try {
             $this->roupaDAO = new RoupaDAO();
 
