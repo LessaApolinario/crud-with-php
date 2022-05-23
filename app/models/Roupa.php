@@ -9,9 +9,8 @@ class Roupa
     private $numero;
     private $quantidade;
 
-    public function __construct($id, $nome, $preco, $descricao, $numero, $quantidade)
+    public function __construct($nome, $preco, $descricao, $numero, $quantidade)
     {
-        $this->id = $id;
         $this->nome = $nome;
         $this->preco = $preco;
         $this->descricao = $descricao;
