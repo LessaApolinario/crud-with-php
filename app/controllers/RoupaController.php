@@ -1,6 +1,7 @@
 <?php
-require_once "../models/Roupa.php";
-require_once "../models/RoupaDAO.php";
+define('ROOT_PATH', dirname(__DIR__));
+require_once ROOT_PATH . "/models/Roupa.php";
+require_once ROOT_PATH . "/models/RoupaDAO.php";
 
 class RoupaController
 {

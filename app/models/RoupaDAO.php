@@ -1,6 +1,6 @@
 <?php
-require_once "./database/MySQLDatabase.php";
-require_once "./DAO.php";
+require_once "database/MySQLDatabase.php";
+require_once "DAO.php";
 
 class RoupaDAO extends DAO
 {

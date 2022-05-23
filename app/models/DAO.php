@@ -1,5 +1,5 @@
 <?php
-require_once "./database/IDatabase.php";
+require_once ROOT_PATH . "/models/database/IDatabase.php";
 
 class DAO implements IDatabase
 {

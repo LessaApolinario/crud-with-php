@@ -1,6 +1,6 @@
 <?php
-require_once "./IDatabase.php";
-require_once "./config/config.php";
+require_once "IDatabase.php";
+require_once ROOT_PATH . "/../config/config.php";
 
 class MySQLDatabase implements IDatabase
 {
