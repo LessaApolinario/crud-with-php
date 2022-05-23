@@ -37,34 +37,34 @@ class MySQLDatabase implements IDatabase
 
     public function insert($values, $data)
     {
-        $tableName = $this->getTableName();
-        return $this->pdo->prepare("INSERT INTO $tableName ($values) VALUES ($data)");
+        $sql = "INSERT INTO $this->tableName ($values) VALUES ($data)";
+        return $this->connection->prepare($sql);
     }
 
     public function update($data, $where)
     {
-        $tableName = $this->getTableName();
-        return $stmt = $this->pdo->prepare("UPDATE $tableName SET $data WHERE $where");
+        $sql = "UPDATE $this->tableName SET $data WHERE $where";
+        return $this->connection->prepare($sql);
     }
 
     public function select($columns = "*", array $filters = null)
     {
-        $stmt = $this->pdo->prepare("SELECT $columns FROM :table");
-        $stmt->bindValue(":table", $this->getTableName());
-        return $stmt->execute();
+        $sql = "SELECT $columns FROM $this->tableName";
+        $sql .= $filters ? "WHERE $filters" : "";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     public function delete($where)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM :table WHERE :where");
-        $stmt->bindValue(":table", $this->getTableName());
-        $stmt->bindValue("where", $where);
-        return $stmt->execute();
+        $sql = "DELETE FROM $this->tableName WHERE $where";
+        return $this->connection->prepare($sql);
     }
 
     public function close()
     {
-        $this->pdo->close();
+        $this->connection->close();
     }
 
     public function setTableName($name)
