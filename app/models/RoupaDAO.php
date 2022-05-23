@@ -27,6 +27,11 @@ class RoupaDAO extends DAO
         return $stmt->execute();
     }
 
+    // read / list
+    public function listar() {
+        return $this->database->select("*", null);
+    }
+
     // update
     public function atualizar($roupa) {
         $data = ":nome, :preco, :descricao, :numero, :quantidade";
