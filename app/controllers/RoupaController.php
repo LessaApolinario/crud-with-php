@@ -51,12 +51,17 @@ class RoupaController
         $numero = $_REQUEST["numero"];
         $quantidade = $_REQUEST["quantidade"];
         $this->roupa = new Roupa($nome, $preco, $descricao, $numero, $quantidade);
+        $this->roupa->setId($_REQUEST["id"]);
 
         try {
             $this->roupaDAO = new RoupaDAO();
-            $this->roupaDAO->atualizar($this->roupa);
+            $id = $this->roupa->getId();
+            $buscarid = $this->roupaDAO->select("id", "WHERE id = $id");
 
-            require_once "./views/atualiza.php";
+            if ($this->roupaDAO->atualizar($this->roupa) && $buscarid) {
+                require_once "./views/roupa/atualizar.php";
+            }
+
         } catch (PDOException $error) {
             echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
         }
