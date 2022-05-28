@@ -56,4 +56,12 @@ class RoupaDAO extends DAO
         $stmt->bindValue(":id", $id);
         return $stmt->execute();
     }
+
+    public function buscarRoupa($id)
+    {
+        $stmt = $this->database->select("id", "id = :id");
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
