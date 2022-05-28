@@ -42,4 +42,23 @@ class RoupaController
             echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
         }
     }
+
+    public function atualizar()
+    {
+        $nome = $_REQUEST["nome"];
+        $preco = $_REQUEST["preco"];
+        $descricao = $_REQUEST["descricao"];
+        $numero = $_REQUEST["numero"];
+        $quantidade = $_REQUEST["quantidade"];
+        $this->roupa = new Roupa($nome, $preco, $descricao, $numero, $quantidade);
+
+        try {
+            $this->roupaDAO = new RoupaDAO();
+            $this->roupaDAO->atualizar($this->roupa);
+
+            require_once "./views/atualiza.php";
+        } catch (PDOException $error) {
+            echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
+        }
+    }
 }
