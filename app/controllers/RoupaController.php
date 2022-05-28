@@ -22,6 +22,8 @@ class RoupaController
 
             if ($this->roupaDAO->cadastrar($this->roupa)) {
                 require_once "./views/roupa/cadastrar.php";
+            } else {
+                echo "Roupa não cadastrada!";
             }
         } catch (PDOException $error) {
             echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
