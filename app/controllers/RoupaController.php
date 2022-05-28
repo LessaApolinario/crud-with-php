@@ -27,4 +27,19 @@ class RoupaController
             echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
         }
     }
+
+    public function listar()
+    {
+        try {
+            $this->roupaDAO = new RoupaDAO();
+            $roupas = $this->roupaDAO->listar();
+
+            $_REQUEST["roupas"] = $roupas;
+
+            require_once "./views/roupa/listar.php";
+
+        } catch (PDOException $error) {
+            echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
+        }
+    }
 }
