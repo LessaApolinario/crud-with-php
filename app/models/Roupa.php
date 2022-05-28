@@ -9,15 +9,6 @@ class Roupa
     private $numero;
     private $quantidade;
 
-    public function __construct($nome, $preco, $descricao, $numero, $quantidade)
-    {
-        $this->nome = $nome;
-        $this->preco = $preco;
-        $this->descricao = $descricao;
-        $this->numero = $numero;
-        $this->quantidade = $quantidade;
-    }
-
     public function getId()
     {
         return $this->id;
