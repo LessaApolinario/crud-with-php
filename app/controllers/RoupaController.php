@@ -10,12 +10,12 @@ class RoupaController
 
     public function cadastrar()
     {
-        $nome = $_REQUEST["nome"];
-        $preco = $_REQUEST["preco"];
-        $descricao = $_REQUEST["descricao"];
-        $numero = $_REQUEST["numero"];
-        $quantidade = $_REQUEST["quantidade"];
-        $this->roupa = new Roupa($nome, $preco, $descricao, $numero, $quantidade);
+        $this->roupa = new Roupa();
+        $this->roupa->setNome($_REQUEST["nome"]);
+        $this->roupa->setPreco($_REQUEST["preco"]);
+        $this->roupa->setDescricao($_REQUEST["descricao"]);
+        $this->roupa->setNumero($_REQUEST["numero"]);
+        $this->roupa->setQuantidade($_REQUEST["quantidade"]);
 
         try {
             $this->roupaDAO = new RoupaDAO();
@@ -45,12 +45,12 @@ class RoupaController
 
     public function atualizar()
     {
-        $nome = $_REQUEST["nome"];
-        $preco = $_REQUEST["preco"];
-        $descricao = $_REQUEST["descricao"];
-        $numero = $_REQUEST["numero"];
-        $quantidade = $_REQUEST["quantidade"];
-        $this->roupa = new Roupa($nome, $preco, $descricao, $numero, $quantidade);
+        $this->roupa = new Roupa();
+        $this->roupa->setNome($_REQUEST["nome"]);
+        $this->roupa->setPreco($_REQUEST["preco"]);
+        $this->roupa->setDescricao($_REQUEST["descricao"]);
+        $this->roupa->setNumero($_REQUEST["numero"]);
+        $this->roupa->setQuantidade($_REQUEST["quantidade"]);
         $this->roupa->setId($_REQUEST["id"]);
 
         try {
