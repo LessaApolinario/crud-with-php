@@ -66,4 +66,22 @@ class RoupaController
             echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
         }
     }
+
+    public function deletar()
+    {
+        $this->roupa = new Roupa();
+        $this->roupa->setId($_REQUEST["id"]);
+
+        try {
+            $this->roupaDAO = new RoupaDAO();
+
+            if ($this->roupaDAO->deletar($this->roupa->getId())) {
+                echo "Roupa deletada com sucesso";
+            } else {
+                echo "Erro ao deletar roupa";
+            }
+        } catch (PDOException $error) {
+            echo "Impossível conectar! Por favor verifique o servidor de banco de dados.";
+        }
+    }
 }
