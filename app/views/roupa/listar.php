@@ -1,4 +1,7 @@
-<h2>Lista de roupas</h2>
+<head>
+    <title>Roupas</title>
+    <link rel="stylesheet" href="..//public/css/listar.css"/>
+</head>
 <table>
     <thead>
     <tr>
