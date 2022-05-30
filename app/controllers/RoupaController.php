@@ -57,10 +57,8 @@ class RoupaController
 
         try {
             $this->roupaDAO = new RoupaDAO();
-            $id = $this->roupa->getId();
-            $idProcurado = $this->roupaDAO->buscarRoupa($id);
 
-            if ($this->roupaDAO->atualizar($this->roupa) && $idProcurado) {
+            if ($this->roupaDAO->atualizar($this->roupa)) {
                 require_once "./views/roupa/atualizar.php";
             }
 

@@ -37,9 +37,8 @@ class RoupaDAO extends DAO
     // update
     public function atualizar($roupa)
     {
-        $data = ":nome, :preco, :descricao, :numero, :quantidade";
-        $where = "id = :id";
-        $stmt = $this->database->update($data, $where);
+        $data = "nome = :nome, preco = :preco, descricao = :descricao, numero = :numero, quantidade = :quantidade";
+        $stmt = $this->database->update($data, "id = :id");
         $stmt->bindValue(":nome", $roupa->getNome());
         $stmt->bindValue(":preco", $roupa->getPreco());
         $stmt->bindValue(":descricao", $roupa->getDescricao());
@@ -59,7 +58,8 @@ class RoupaDAO extends DAO
 
     public function buscarRoupa($id)
     {
-        $stmt = $this->database->select("id", "id = :id");
+        $filters = ["id = :id"];
+        $stmt = $this->database->select("id", $filters);
         $stmt->bindValue(":id", $id);
         $stmt->execute();
         return $stmt->fetch();
