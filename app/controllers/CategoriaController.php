@@ -1,6 +1,7 @@
 <?php
+define('ROOT_PATH', dirname(__DIR__));
 require_once ROOT_PATH . "/models/Categoria.php";
-require_once ROOT_PATH . "/models/RoupaDAO.php";
+require_once ROOT_PATH . "/models/CategoriaDAO.php";
 
 class CategoriaController
 {
@@ -43,7 +44,7 @@ class CategoriaController
     {
         $this->categoria = new Categoria();
         $this->categoria->setNome($_REQUEST["nome"]);
-        $this->categoria->setNome($_REQUEST["id"]);
+        $this->categoria->setId($_REQUEST["id"]);
 
         try {
             $this->categoriaDAO = new CategoriaDAO();
