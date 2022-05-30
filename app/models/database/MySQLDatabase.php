@@ -44,7 +44,7 @@ class MySQLDatabase implements IDatabase
     public function select($columns = "*", array $filters = null)
     {
         $sql = "SELECT $columns FROM $this->tableName";
-        $sql .= $filters ? "WHERE $filters" : "";
+        $sql .= $filters ? "WHERE " . implode("", $filters) : "";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
