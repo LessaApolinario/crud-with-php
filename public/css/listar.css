@@ -1,0 +1,29 @@
+table {
+    width: 61.25rem;
+    padding: 1rem 1.5rem;
+
+    border-radius: 0.5rem;
+
+    box-shadow: 0 0 5px #CCC;
+}
+
+table thead tr {
+    box-shadow: 0 1px 0 #000;
+}
+
+table thead tr, table tbody tr {
+    text-align: left;
+}
+
+table thead tr td, table tbody tr td {
+    padding: 1rem;
+}
+
+table tbody tr:hover {
+    box-shadow: 0 0 5px #CCC;
+    border-radius: 0.5rem;
+}
+
+thead th, tbody td {
+    font-size: 1.05rem;
+}
