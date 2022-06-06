@@ -7,6 +7,7 @@ class RoupaController
 {
     private $roupa;
     private $roupaDAO;
+    private $database;
 
     public function cadastrar()
     {
@@ -18,7 +19,8 @@ class RoupaController
         $this->roupa->setQuantidade($_REQUEST["quantidade"]);
 
         try {
-            $this->roupaDAO = new RoupaDAO();
+            $this->database = new MySQLDatabase();
+            $this->roupaDAO = new RoupaDAO($this->database);
 
             if ($this->roupaDAO->cadastrar($this->roupa)) {
                 require_once "./views/roupa/cadastrar.php";
@@ -33,7 +35,8 @@ class RoupaController
     public function listar()
     {
         try {
-            $this->roupaDAO = new RoupaDAO();
+            $this->database = new MySQLDatabase();
+            $this->roupaDAO = new RoupaDAO($this->database);
             $roupas = $this->roupaDAO->listar();
 
             $_REQUEST["roupas"] = $roupas;
@@ -56,7 +59,8 @@ class RoupaController
         $this->roupa->setId($_REQUEST["id"]);
 
         try {
-            $this->roupaDAO = new RoupaDAO();
+            $this->database = new MySQLDatabase();
+            $this->roupaDAO = new RoupaDAO($this->database);
 
             if ($this->roupaDAO->atualizar($this->roupa)) {
                 require_once "./views/roupa/atualizar.php";
@@ -73,7 +77,8 @@ class RoupaController
         $this->roupa->setId($_REQUEST["id"]);
 
         try {
-            $this->roupaDAO = new RoupaDAO();
+            $this->database = new MySQLDatabase();
+            $this->roupaDAO = new RoupaDAO($this->database);
 
             if ($this->roupaDAO->deletar($this->roupa->getId())) {
                 echo "Roupa deletada com sucesso";

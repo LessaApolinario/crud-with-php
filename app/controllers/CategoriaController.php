@@ -7,6 +7,7 @@ class CategoriaController
 {
     private $categoria;
     private $categoriaDAO;
+    private $database;
 
     public function cadastrar()
     {
@@ -14,7 +15,8 @@ class CategoriaController
         $this->categoria->setNome($_REQUEST["nome"]);
 
         try {
-            $this->categoriaDAO = new CategoriaDAO();
+            $this->database = new MySQLDatabase();
+            $this->categoriaDAO = new CategoriaDAO($this->database);
 
             if ($this->categoriaDAO->cadastrar($this->categoria)) {
                 require_once "./views/categoria/cadastrar.php";
@@ -29,7 +31,8 @@ class CategoriaController
     public function listar()
     {
         try {
-            $this->categoriaDAO = new CategoriaDAO();
+            $this->database = new MySQLDatabase();
+            $this->categoriaDAO = new CategoriaDAO($this->database);
             $categorias = $this->categoriaDAO->listar();
 
             $_REQUEST["categorias"] = $categorias;
@@ -47,7 +50,8 @@ class CategoriaController
         $this->categoria->setId($_REQUEST["id"]);
 
         try {
-            $this->categoriaDAO = new CategoriaDAO();
+            $this->database = new MySQLDatabase();
+            $this->categoriaDAO = new CategoriaDAO($this->database);
 
             if ($this->categoriaDAO->atualizar($this->categoria)) {
                 require_once "./views/categoria/atualizar.php";
@@ -63,7 +67,8 @@ class CategoriaController
         $this->categoria->setId($_REQUEST["id"]);
 
         try {
-            $this->categoriaDAO = new CategoriaDAO();
+            $this->database = new MySQLDatabase();
+            $this->categoriaDAO = new CategoriaDAO($this->database);
 
             if ($this->categoriaDAO->deletar($this->categoria->getId())) {
                 echo "Categoria deletada com sucesso!";

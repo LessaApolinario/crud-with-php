@@ -1,4 +1,5 @@
 <?php
+require_once "database/IDatabase.php";
 require_once "database/MySQLDatabase.php";
 require_once "DAO.php";
 
@@ -7,10 +8,9 @@ class CategoriaDAO extends DAO
     private $database;
     private $tableName = "categoria";
 
-    public function __construct()
+    public function __construct(IDatabase $database)
     {
-        $this->database = new MySQLDatabase();
-        parent::__construct($this->database);
+        parent::__construct($database);
         parent::setTableName($this->tableName);
     }
 
