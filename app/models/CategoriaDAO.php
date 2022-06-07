@@ -10,6 +10,7 @@ class CategoriaDAO extends DAO
 
     public function __construct(IDatabase $database)
     {
+        $this->database = $database;
         parent::__construct($database);
         parent::setTableName($this->tableName);
     }
